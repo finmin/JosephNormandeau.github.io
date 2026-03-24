@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Joseph Normandeau – Aerospace Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=DM+Mono:wght@300;400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0a1628;
+    --deep: #0d1f3c;
+    --mid: #1a3460;
+    --accent: #4a9eff;
+    --gold: #c8a96e;
+    --silver: #8fa3be;
+    --light: #dce8f5;
+    --white: #f0f6ff;
+    --text: #b8cfe8;
+    --mono: 'DM Mono', monospace;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'Outfit', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy);
+    color: var(--text);
+    font-family: var(--sans);
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ─── STAR FIELD ─── */
+  #stars {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .star {
+    position: absolute;
+    border-radius: 50%;
+    background: white;
+    animation: twinkle var(--dur, 3s) ease-in-out infinite var(--delay, 0s);
+  }
+  @keyframes twinkle {
+    0%, 100% { opacity: var(--lo, 0.1); }
+    50% { opacity: var(--hi, 0.8); }
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 3rem;
+    background: rgba(10,22,40,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(74,158,255,0.12);
+  }
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--white);
+    letter-spacing: 0.05em;
+  }
+  .nav-logo span { color: var(--gold); }
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+  .nav-links a {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--silver);
+    text-decoration: none;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: color 0.25s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* ─── SECTIONS ─── */
+  section {
+    position: relative;
+    z-index: 1;
+    padding: 6rem 0;
+  }
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2.5rem;
+  }
+
+  /* ─── SECTION LABEL ─── */
+  .section-label {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+    opacity: 0.85;
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 300;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 2.5rem;
+  }
+  .divider {
+    width: 50px;
+    height: 1px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    margin: 1.5rem 0 3rem;
+  }
+
+  /* ─── HERO ─── */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 0;
+  }
+  .hero-inner {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 4rem;
+    padding-top: 5rem;
+  }
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 30px;
+    height: 1px;
+    background: var(--accent);
+  }
+  .hero-name {
+    font-family: var(--serif);
+    font-size: clamp(3.5rem, 7vw, 6rem);
+    font-weight: 300;
+    color: var(--white);
+    line-height: 1;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.4rem;
+  }
+  .hero-name em {
+    color: var(--gold);
+    font-style: normal;
+  }
+  .hero-title {
+    font-family: var(--mono);
+    font-size: 0.9rem;
+    color: var(--silver);
+    letter-spacing: 0.08em;
+    margin-bottom: 2rem;
+  }
+  .hero-summary {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--text);
+    max-width: 580px;
+    margin-bottom: 2.5rem;
+  }
+  .hero-ctas {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    padding: 0.75rem 2rem;
+    background: var(--accent);
+    color: var(--navy);
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.25s;
+  }
+  .btn-primary:hover {
+    background: var(--white);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(74,158,255,0.3);
+  }
+  .btn-outline {
+    padding: 0.75rem 2rem;
+    border: 1px solid rgba(74,158,255,0.4);
+    color: var(--accent);
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.25s;
+  }
+  .btn-outline:hover {
+    border-color: var(--accent);
+    background: rgba(74,158,255,0.08);
+    transform: translateY(-2px);
+  }
+
+  /* orbit diagram */
+  .hero-orbit {
+    width: 280px;
+    height: 280px;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .orbit-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .orbit-ring:nth-child(1) {
+    width: 80px; height: 80px;
+    border-color: rgba(200,169,110,0.5);
+    background: rgba(200,169,110,0.04);
+  }
+  .orbit-ring:nth-child(2) {
+    width: 150px; height: 150px;
+    border-color: rgba(74,158,255,0.25);
+    animation: spin 18s linear infinite;
+  }
+  .orbit-ring:nth-child(3) {
+    width: 230px; height: 230px;
+    border-color: rgba(74,158,255,0.12);
+    animation: spin 32s linear infinite reverse;
+  }
+  .orbit-dot {
+    position: absolute;
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    top: -3.5px; left: 50%;
+    margin-left: -3.5px;
+    box-shadow: 0 0 10px var(--accent);
+  }
+  .orbit-dot-2 {
+    position: absolute;
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--gold);
+    bottom: -2.5px; left: 50%;
+    margin-left: -2.5px;
+    box-shadow: 0 0 8px var(--gold);
+  }
+  .orbit-center {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    text-align: center;
+    line-height: 1;
+  }
+  .orbit-center small {
+    display: block;
+    font-family: var(--mono);
+    font-size: 0.45rem;
+    color: var(--silver);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+  @keyframes spin {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+  }
+
+  /* ─── ABOUT ─── */
+  #about { background: var(--deep); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  .about-text p {
+    font-size: 1rem;
+    line-height: 1.85;
+    margin-bottom: 1.2rem;
+    color: var(--text);
+  }
+  .about-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 2rem;
+  }
+  .badge {
+    padding: 0.3rem 0.9rem;
+    border: 1px solid rgba(200,169,110,0.35);
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--gold);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .about-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  .stat-card {
+    padding: 1.5rem;
+    border: 1px solid rgba(74,158,255,0.12);
+    background: rgba(74,158,255,0.03);
+    position: relative;
+    overflow: hidden;
+  }
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 2px;
+    height: 100%;
+    background: var(--accent);
+    opacity: 0.5;
+  }
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 2.8rem;
+    color: var(--accent);
+    font-weight: 300;
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+  .stat-label {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--silver);
+  }
+
+  /* ─── EXPERIENCE ─── */
+  #experience {}
+  .exp-item {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(74,158,255,0.08);
+  }
+  .exp-item:last-child { border-bottom: none; }
+  .exp-meta {
+    padding-top: 0.25rem;
+  }
+  .exp-period {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+  }
+  .exp-company {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--silver);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .exp-role {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    color: var(--white);
+    font-weight: 400;
+    margin-bottom: 1rem;
+  }
+  .exp-desc {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--text);
+  }
+  .exp-bullets {
+    list-style: none;
+    margin-top: 0.75rem;
+  }
+  .exp-bullets li {
+    font-size: 0.93rem;
+    line-height: 1.7;
+    color: var(--text);
+    padding-left: 1.2rem;
+    position: relative;
+    margin-bottom: 0.4rem;
+  }
+  .exp-bullets li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 0.75rem;
+    top: 0.15rem;
+  }
+
+  /* ─── PROJECTS ─── */
+  #projects { background: var(--deep); }
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  .project-card {
+    padding: 2rem;
+    border: 1px solid rgba(74,158,255,0.12);
+    background: rgba(10,22,40,0.6);
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .project-card:hover {
+    border-color: rgba(74,158,255,0.35);
+    transform: translateY(-4px);
+  }
+  .project-card::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 40px; height: 40px;
+    border-top: 2px solid var(--gold);
+    border-right: 2px solid var(--gold);
+    opacity: 0.4;
+  }
+  .project-tag {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+  .project-name {
+    font-family: var(--serif);
+    font-size: 1.35rem;
+    color: var(--white);
+    font-weight: 400;
+    margin-bottom: 0.75rem;
+  }
+  .project-desc {
+    font-size: 0.9rem;
+    line-height: 1.75;
+    color: var(--text);
+  }
+  .project-tools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.25rem;
+  }
+  .tool-tag {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    padding: 0.2rem 0.6rem;
+    background: rgba(74,158,255,0.08);
+    border: 1px solid rgba(74,158,255,0.2);
+    color: var(--silver);
+  }
+
+  /* ─── SKILLS ─── */
+  #skills {}
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  .skill-group {
+    padding: 1.75rem;
+    border: 1px solid rgba(74,158,255,0.1);
+    background: rgba(74,158,255,0.02);
+    position: relative;
+  }
+  .skill-group::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, var(--accent), transparent);
+    opacity: 0.3;
+  }
+  .skill-group-title {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.2rem;
+  }
+  .skill-list {
+    list-style: none;
+  }
+  .skill-list li {
+    font-size: 0.92rem;
+    color: var(--text);
+    padding: 0.35rem 0;
+    border-bottom: 1px solid rgba(74,158,255,0.06);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .skill-list li::before {
+    content: '';
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+  .skill-list li:last-child { border-bottom: none; }
+
+  /* ─── EDUCATION ─── */
+  #education { background: var(--deep); }
+  .edu-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .edu-item {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 2rem;
+    align-items: start;
+    padding: 1.75rem;
+    border: 1px solid rgba(74,158,255,0.1);
+    background: rgba(10,22,40,0.5);
+  }
+  .edu-year {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+    padding-top: 0.2rem;
+    min-width: 80px;
+  }
+  .edu-school {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    color: var(--white);
+    font-weight: 400;
+    margin-bottom: 0.2rem;
+  }
+  .edu-degree {
+    font-size: 0.88rem;
+    color: var(--silver);
+    line-height: 1.6;
+  }
+  .edu-primary {
+    border-color: rgba(200,169,110,0.25);
+    background: rgba(200,169,110,0.03);
+  }
+  .edu-primary .edu-year { color: var(--gold); }
+
+  /* ─── CONTACT ─── */
+  #contact {}
+  .contact-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  .contact-text p {
+    font-size: 1rem;
+    line-height: 1.85;
+    color: var(--text);
+    margin-bottom: 2rem;
+  }
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    color: var(--text);
+    padding: 1rem 1.25rem;
+    border: 1px solid rgba(74,158,255,0.12);
+    transition: all 0.25s;
+  }
+  .contact-link:hover {
+    border-color: rgba(74,158,255,0.4);
+    background: rgba(74,158,255,0.05);
+    color: var(--white);
+    transform: translateX(4px);
+  }
+  .contact-link-icon {
+    width: 36px; height: 36px;
+    background: rgba(74,158,255,0.08);
+    border: 1px solid rgba(74,158,255,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 1rem;
+  }
+  .contact-link-label {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--silver);
+    margin-bottom: 0.15rem;
+  }
+  .contact-link-val {
+    font-size: 0.9rem;
+    color: var(--text);
+  }
+  .contact-extra {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .info-block {
+    padding: 1.5rem;
+    border: 1px solid rgba(200,169,110,0.15);
+    background: rgba(200,169,110,0.02);
+  }
+  .info-block-title {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.6rem;
+  }
+  .info-block-text {
+    font-size: 0.9rem;
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    position: relative;
+    z-index: 1;
+    border-top: 1px solid rgba(74,158,255,0.08);
+    padding: 1.75rem 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    color: rgba(143,163,190,0.5);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* ─── SCROLL ANIMATIONS ─── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.25rem; }
+    .nav-links { gap: 1.2rem; }
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-orbit { display: none; }
+    .about-grid, .contact-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    section { padding: 4rem 0; }
+  }
+</style>
+</head>
+<body>
+
+<div id="stars"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">J<span>N</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-eyebrow">Aerospace Engineering · Astronautics</div>
+        <h1 class="hero-name">Joseph<br><em>Normandeau</em></h1>
+        <p class="hero-title">B.S. Candidate — Arizona State University · Est. May 2027</p>
+        <p class="hero-summary">Aerospace engineering student specializing in astronautics, with hands-on experience in aerodynamics experimentation, structural analysis, and orbital mechanics modeling. Combining rigorous analytical skills with computational tools to push the boundaries of what flies — and what orbits.</p>
+        <div class="hero-ctas">
+          <a href="#contact" class="btn-primary">Get in Touch</a>
+          <a href="#projects" class="btn-outline">View Projects</a>
+        </div>
+      </div>
+      <div class="hero-orbit">
+        <div class="orbit-ring"></div>
+        <div class="orbit-ring"><div class="orbit-dot"></div></div>
+        <div class="orbit-ring"><div class="orbit-dot-2"></div></div>
+        <div class="orbit-center">JN<small>Astronautics</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="reveal">
+        <p class="section-label">01 / About</p>
+        <h2 class="section-title">Driven by the<br>Science of Flight</h2>
+        <div class="about-text">
+          <p>I'm an Aerospace Engineering student at Arizona State University, concentrating in Astronautics, with a genuine passion for the physics that governs everything from hypersonic shock waves to interplanetary trajectories.</p>
+          <p>My academic projects have taken me from wind tunnel test rigs and tensile testing machines to MATLAB orbital simulations — building both the practical skills and the theoretical foundation that modern aerospace demands.</p>
+          <p>Outside the lab I'm an active member of Sun Devil Rocketry, where I collaborate on propulsion, structures, and flight systems alongside fellow engineers who share the same curiosity about what's possible at the edge of the atmosphere — and beyond.</p>
+        </div>
+        <div class="about-badges">
+          <span class="badge">ITAR Compliant</span>
+          <span class="badge">Dual US &amp; CA Citizen</span>
+          <span class="badge">NEXUS / Global Entry</span>
+          <span class="badge">Seeking Summer Internship</span>
+        </div>
+      </div>
+      <div class="about-stats reveal">
+        <div class="stat-card">
+          <div class="stat-num">4+</div>
+          <div class="stat-label">Engineering Projects</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">3+</div>
+          <div class="stat-label">MATLAB Applications</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">2027</div>
+          <div class="stat-label">Expected Graduation</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">ASU</div>
+          <div class="stat-label">Sun Devil Rocketry</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <p class="section-label reveal">02 / Experience</p>
+    <h2 class="section-title reveal">Work History</h2>
+    <div class="divider"></div>
+
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <div class="exp-period">Jan 2023 – Aug 2024</div>
+        <div class="exp-company">Mesa, AZ</div>
+      </div>
+      <div>
+        <div class="exp-role">Guest Services Associate</div>
+        <div class="exp-company" style="margin-bottom:0.6rem">LA Fitness</div>
+        <ul class="exp-bullets">
+          <li>Managed front desk operations and membership systems in a high-volume environment</li>
+          <li>Delivered consistent customer service, building strong communication and interpersonal skills</li>
+          <li>Developed systematic problem-solving approaches to resolve member issues quickly and professionally</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <div class="exp-period">Ongoing</div>
+        <div class="exp-company">Tempe, AZ</div>
+      </div>
+      <div>
+        <div class="exp-role">Rocketry Team Member</div>
+        <div class="exp-company" style="margin-bottom:0.6rem">Sun Devil Rocketry – Arizona State University</div>
+        <ul class="exp-bullets">
+          <li>Participate in a student engineering team designing and building high-powered rockets</li>
+          <li>Collaborate across propulsion, structures, and flight systems sub-teams</li>
+          <li>Apply classroom aerodynamics and structures knowledge in hands-on hardware development</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <p class="section-label reveal">03 / Projects</p>
+    <h2 class="section-title reveal">Engineering Work</h2>
+    <div class="divider"></div>
+    <div class="projects-grid">
+
+      <div class="project-card reveal">
+        <div class="project-tag">Aerodynamics Lab</div>
+        <div class="project-name">Wind Tunnel Airfoil Analysis</div>
+        <p class="project-desc">Processed wind tunnel pressure data for NACA airfoils using MATLAB to analyze lift, drag, and aerodynamic performance. Compared experimental results against theoretical models, validating boundary-layer and potential-flow predictions.</p>
+        <div class="project-tools">
+          <span class="tool-tag">MATLAB</span>
+          <span class="tool-tag">Data Analysis</span>
+          <span class="tool-tag">NACA Airfoils</span>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-tag">High-Speed Aerodynamics Lab</div>
+        <div class="project-name">Shock Tube Experiment</div>
+        <p class="project-desc">Measured shock wave propagation using pressure transducers to experimentally determine shock speed. Analyzed time-series pressure data in MATLAB and correlated findings with normal shock relations and Rankine–Hugoniot conditions.</p>
+        <div class="project-tools">
+          <span class="tool-tag">MATLAB</span>
+          <span class="tool-tag">Pressure Transducers</span>
+          <span class="tool-tag">Shock Dynamics</span>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-tag">Aerospace Structures Lab</div>
+        <div class="project-name">Structural Mechanics Testing</div>
+        <p class="project-desc">Conducted tensile testing of aluminum and steel specimens to failure. Extracted material properties including Young's modulus from strain-gauge measurements, comparing results to published handbook values for engineering metals.</p>
+        <div class="project-tools">
+          <span class="tool-tag">Tensile Testing</span>
+          <span class="tool-tag">Strain Gauges</span>
+          <span class="tool-tag">Materials Science</span>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-tag">Orbital Mechanics</div>
+        <div class="project-name">Orbital Transfer Simulation</div>
+        <p class="project-desc">Developed MATLAB scripts to numerically solve Kepler's equation and model Hohmann transfer trajectories between circular orbits. Computed delta-V requirements, transfer times, and visualized orbital paths for mission-planning scenarios.</p>
+        <div class="project-tools">
+          <span class="tool-tag">MATLAB</span>
+          <span class="tool-tag">Kepler's Equation</span>
+          <span class="tool-tag">Orbital Mechanics</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <p class="section-label reveal">04 / Skills</p>
+    <h2 class="section-title reveal">Technical Toolkit</h2>
+    <div class="divider"></div>
+    <div class="skills-grid">
+
+      <div class="skill-group reveal">
+        <div class="skill-group-title">Programming &amp; Analysis</div>
+        <ul class="skill-list">
+          <li>MATLAB</li>
+          <li>Engineering Data Analysis</li>
+          <li>Computational Modeling</li>
+          <li>Numerical Methods</li>
+        </ul>
+      </div>
+
+      <div class="skill-group reveal">
+        <div class="skill-group-title">Engineering Software</div>
+        <ul class="skill-list">
+          <li>SolidWorks</li>
+          <li>Ansys (FEA)</li>
+          <li>Microsoft Excel</li>
+        </ul>
+      </div>
+
+      <div class="skill-group reveal">
+        <div class="skill-group-title">Domain Knowledge</div>
+        <ul class="skill-list">
+          <li>High-Speed Aerodynamics</li>
+          <li>Orbital Mechanics</li>
+          <li>Aerospace Structures &amp; Materials</li>
+          <li>Thermodynamics</li>
+          <li>Random Signal Analysis</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="container">
+    <p class="section-label reveal">05 / Education</p>
+    <h2 class="section-title reveal">Academic Background</h2>
+    <div class="divider"></div>
+    <div class="edu-list">
+
+      <div class="edu-item edu-primary reveal">
+        <div class="edu-year">2023 – 2027</div>
+        <div>
+          <div class="edu-school">Arizona State University — Tempe, AZ</div>
+          <div class="edu-degree">Bachelor of Science in Aerospace Engineering (Astronautics)<br>Expected Graduation: May 2027</div>
+        </div>
+      </div>
+
+      <div class="edu-item reveal">
+        <div class="edu-year">Prior</div>
+        <div>
+          <div class="edu-school">Chandler-Gilbert Community College</div>
+          <div class="edu-degree">English Composition 101 — University Credit</div>
+        </div>
+      </div>
+
+      <div class="edu-item reveal">
+        <div class="edu-year">Prior</div>
+        <div>
+          <div class="edu-school">East Valley Institute of Technology</div>
+          <div class="edu-degree">Future Engineering Program — University of Arizona First-Year Engineering Credit</div>
+        </div>
+      </div>
+
+      <div class="edu-item reveal">
+        <div class="edu-year">2023</div>
+        <div>
+          <div class="edu-school">American Leadership Academy — Gilbert North</div>
+          <div class="edu-degree">High School Diploma, May 2023</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <p class="section-label reveal">06 / Contact</p>
+    <h2 class="section-title reveal">Let's Connect</h2>
+    <div class="divider"></div>
+    <div class="contact-inner">
+      <div class="reveal">
+        <p class="contact-text">
+          <p>I'm actively seeking Summer 2025 aerospace engineering internships. Whether you have an opportunity in propulsion, structures, flight dynamics, or mission analysis — I'd love to hear from you.</p>
+        </p>
+        <div class="contact-links">
+          <a href="mailto:josephnormandeau@gmail.com" class="contact-link">
+            <div class="contact-link-icon">✉</div>
+            <div>
+              <div class="contact-link-label">Email</div>
+              <div class="contact-link-val">josephnormandeau@gmail.com</div>
+            </div>
+          </a>
+          <a href="tel:3606721209" class="contact-link">
+            <div class="contact-link-icon">☎</div>
+            <div>
+              <div class="contact-link-label">Phone</div>
+              <div class="contact-link-val">360-672-1209</div>
+            </div>
+          </a>
+          <a href="https://www.linkedin.com/in/josephnormandeau-32817b388" target="_blank" class="contact-link">
+            <div class="contact-link-icon">in</div>
+            <div>
+              <div class="contact-link-label">LinkedIn</div>
+              <div class="contact-link-val">Joseph Normandeau</div>
+            </div>
+          </a>
+          <a href="#" class="contact-link">
+            <div class="contact-link-icon">📍</div>
+            <div>
+              <div class="contact-link-label">Location</div>
+              <div class="contact-link-val">Phoenix, AZ</div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="contact-extra reveal">
+        <div class="info-block">
+          <div class="info-block-title">Citizenship &amp; Compliance</div>
+          <div class="info-block-text">Dual U.S. and Canadian Citizen — fully ITAR compliant. Available for internships without sponsorship requirements in the United States.</div>
+        </div>
+        <div class="info-block">
+          <div class="info-block-title">Travel &amp; Clearance</div>
+          <div class="info-block-text">NEXUS and Global Entry member. Available to travel and relocate for the right internship opportunity.</div>
+        </div>
+        <div class="info-block">
+          <div class="info-block-title">Availability</div>
+          <div class="info-block-text">Seeking a full-time Summer internship position. Available to begin May 2025 through August 2025.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>Joseph Normandeau — Aerospace Engineering</span>
+  <span>Phoenix, AZ · josephnormandeau@gmail.com</span>
+</footer>
+
+<script>
+  // Stars
+  const starsEl = document.getElementById('stars');
+  for (let i = 0; i < 180; i++) {
+    const s = document.createElement('div');
+    s.className = 'star';
+    const size = Math.random() * 2 + 0.5;
+    const dur = (Math.random() * 4 + 2).toFixed(1);
+    const delay = (Math.random() * 5).toFixed(1);
+    const lo = (Math.random() * 0.2).toFixed(2);
+    const hi = (Math.random() * 0.6 + 0.3).toFixed(2);
+    s.style.cssText = `
+      width:${size}px; height:${size}px;
+      top:${Math.random()*100}%; left:${Math.random()*100}%;
+      --dur:${dur}s; --delay:${delay}s; --lo:${lo}; --hi:${hi};
+    `;
+    starsEl.appendChild(s);
+  }
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(r => obs.observe(r));
+</script>
+</body>
+</html>
