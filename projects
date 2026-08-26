@@ -1,0 +1,1254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Joseph Normandeau – Aerospace Engineer</title>
+<meta name="description" content="Aerospace engineering portfolio of Joseph Normandeau, an ASU astronautics student seeking full-time aerospace opportunities beginning May 2027.">
+<meta name="theme-color" content="#0a1628">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Joseph Normandeau – Aerospace Engineer">
+<meta property="og:description" content="Projects and experience in aerodynamics, structures, rocketry, and orbital mechanics.">
+<meta property="og:url" content="https://josephnormandeau.github.io/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=DM+Mono:wght@300;400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0a1628;
+    --deep: #0d1f3c;
+    --mid: #1a3460;
+    --accent: #4a9eff;
+    --gold: #c8a96e;
+    --silver: #8fa3be;
+    --light: #dce8f5;
+    --white: #f0f6ff;
+    --text: #b8cfe8;
+    --mono: 'DM Mono', monospace;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'Outfit', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy);
+    color: var(--text);
+    font-family: var(--sans);
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+  a, button { -webkit-tap-highlight-color: transparent; }
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 4px;
+  }
+  .skip-link {
+    position: fixed;
+    top: 0.75rem;
+    left: 0.75rem;
+    z-index: 1000;
+    padding: 0.7rem 1rem;
+    background: var(--white);
+    color: var(--navy);
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    transform: translateY(-150%);
+    transition: transform 0.2s;
+  }
+  .skip-link:focus { transform: translateY(0); }
+
+  /* ─── STAR FIELD ─── */
+  #stars {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .star {
+    position: absolute;
+    border-radius: 50%;
+    background: white;
+    animation: twinkle var(--dur, 3s) ease-in-out infinite var(--delay, 0s);
+  }
+  @keyframes twinkle {
+    0%, 100% { opacity: var(--lo, 0.1); }
+    50% { opacity: var(--hi, 0.8); }
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 3rem;
+    background: rgba(10,22,40,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(74,158,255,0.12);
+  }
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--white);
+    letter-spacing: 0.05em;
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--gold); }
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+  .nav-links a {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--silver);
+    text-decoration: none;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: color 0.25s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-toggle {
+    display: none;
+    width: 44px;
+    height: 44px;
+    border: 1px solid rgba(74,158,255,0.3);
+    background: rgba(74,158,255,0.06);
+    color: var(--white);
+    font-family: var(--mono);
+    cursor: pointer;
+  }
+
+  /* ─── SECTIONS ─── */
+  section {
+    position: relative;
+    z-index: 1;
+    padding: 6rem 0;
+    scroll-margin-top: 5rem;
+  }
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2.5rem;
+  }
+
+  /* ─── SECTION LABEL ─── */
+  .section-label {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+    opacity: 0.85;
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 300;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 2.5rem;
+  }
+  .divider {
+    width: 50px;
+    height: 1px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    margin: 1.5rem 0 3rem;
+  }
+
+  /* ─── HERO ─── */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 0;
+  }
+  .hero-inner {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 4rem;
+    padding-top: 5rem;
+  }
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 30px;
+    height: 1px;
+    background: var(--accent);
+  }
+  .hero-name {
+    font-family: var(--serif);
+    font-size: clamp(3.5rem, 7vw, 6rem);
+    font-weight: 300;
+    color: var(--white);
+    line-height: 1;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.4rem;
+  }
+  .hero-name em {
+    color: var(--gold);
+    font-style: normal;
+  }
+  .hero-title {
+    font-family: var(--mono);
+    font-size: 0.9rem;
+    color: var(--silver);
+    letter-spacing: 0.08em;
+    margin-bottom: 2rem;
+  }
+  .hero-summary {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--text);
+    max-width: 580px;
+    margin-bottom: 2.5rem;
+  }
+  .hero-ctas {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    padding: 0.75rem 2rem;
+    background: var(--accent);
+    color: var(--navy);
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.25s;
+  }
+  .btn-primary:hover {
+    background: var(--white);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(74,158,255,0.3);
+  }
+  .btn-outline {
+    padding: 0.75rem 2rem;
+    border: 1px solid rgba(74,158,255,0.4);
+    color: var(--accent);
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.25s;
+  }
+  .btn-outline:hover {
+    border-color: var(--accent);
+    background: rgba(74,158,255,0.08);
+    transform: translateY(-2px);
+  }
+
+  /* orbit diagram */
+  .hero-orbit {
+    width: 280px;
+    height: 280px;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .orbit-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .orbit-ring:nth-child(1) {
+    width: 80px; height: 80px;
+    border-color: rgba(200,169,110,0.5);
+    background: rgba(200,169,110,0.04);
+  }
+  .orbit-ring:nth-child(2) {
+    width: 150px; height: 150px;
+    border-color: rgba(74,158,255,0.25);
+    animation: spin 18s linear infinite;
+  }
+  .orbit-ring:nth-child(3) {
+    width: 230px; height: 230px;
+    border-color: rgba(74,158,255,0.12);
+    animation: spin 32s linear infinite reverse;
+  }
+  .orbit-dot {
+    position: absolute;
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    top: -3.5px; left: 50%;
+    margin-left: -3.5px;
+    box-shadow: 0 0 10px var(--accent);
+  }
+  .orbit-dot-2 {
+    position: absolute;
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--gold);
+    bottom: -2.5px; left: 50%;
+    margin-left: -2.5px;
+    box-shadow: 0 0 8px var(--gold);
+  }
+  .orbit-center {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    text-align: center;
+    line-height: 1;
+  }
+  .orbit-center small {
+    display: block;
+    font-family: var(--mono);
+    font-size: 0.45rem;
+    color: var(--silver);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+  @keyframes spin {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+  }
+
+  /* ─── ABOUT ─── */
+  #about { background: var(--deep); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  .about-text p {
+    font-size: 1rem;
+    line-height: 1.85;
+    margin-bottom: 1.2rem;
+    color: var(--text);
+  }
+  .about-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 2rem;
+  }
+  .badge {
+    padding: 0.3rem 0.9rem;
+    border: 1px solid rgba(200,169,110,0.35);
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--gold);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .about-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  .stat-card {
+    padding: 1.5rem;
+    border: 1px solid rgba(74,158,255,0.12);
+    background: rgba(74,158,255,0.03);
+    position: relative;
+    overflow: hidden;
+  }
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 2px;
+    height: 100%;
+    background: var(--accent);
+    opacity: 0.5;
+  }
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 2.8rem;
+    color: var(--accent);
+    font-weight: 300;
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+  .stat-label {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--silver);
+  }
+
+  /* ─── EXPERIENCE ─── */
+  #experience {}
+  .exp-item {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(74,158,255,0.08);
+  }
+  .exp-item:last-child { border-bottom: none; }
+  .exp-meta {
+    padding-top: 0.25rem;
+  }
+  .exp-period {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+  }
+  .exp-company {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--silver);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .exp-role {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    color: var(--white);
+    font-weight: 400;
+    margin-bottom: 1rem;
+  }
+  .exp-desc {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--text);
+  }
+  .exp-bullets {
+    list-style: none;
+    margin-top: 0.75rem;
+  }
+  .exp-bullets li {
+    font-size: 0.93rem;
+    line-height: 1.7;
+    color: var(--text);
+    padding-left: 1.2rem;
+    position: relative;
+    margin-bottom: 0.4rem;
+  }
+  .exp-bullets li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 0.75rem;
+    top: 0.15rem;
+  }
+
+  /* ─── PROJECTS ─── */
+  #projects { background: var(--deep); }
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  .project-card {
+    display: block;
+    padding: 2rem;
+    border: 1px solid rgba(74,158,255,0.12);
+    background: rgba(10,22,40,0.6);
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s;
+    color: inherit;
+    text-decoration: none;
+  }
+  .project-card:hover {
+    border-color: rgba(74,158,255,0.35);
+    transform: translateY(-4px);
+  }
+  .project-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1.35rem;
+    color: var(--gold);
+    font-family: var(--mono);
+    font-size: 0.64rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .project-status::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--gold);
+  }
+  .project-card::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 40px; height: 40px;
+    border-top: 2px solid var(--gold);
+    border-right: 2px solid var(--gold);
+    opacity: 0.4;
+  }
+  .project-tag {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+  .project-name {
+    font-family: var(--serif);
+    font-size: 1.35rem;
+    color: var(--white);
+    font-weight: 400;
+    margin-bottom: 0.75rem;
+  }
+  .project-desc {
+    font-size: 0.9rem;
+    line-height: 1.75;
+    color: var(--text);
+  }
+  .project-tools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.25rem;
+  }
+  .tool-tag {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    padding: 0.2rem 0.6rem;
+    background: rgba(74,158,255,0.08);
+    border: 1px solid rgba(74,158,255,0.2);
+    color: var(--silver);
+  }
+
+  /* ─── SKILLS ─── */
+  #skills {}
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  .skill-group {
+    padding: 1.75rem;
+    border: 1px solid rgba(74,158,255,0.1);
+    background: rgba(74,158,255,0.02);
+    position: relative;
+  }
+  .skill-group::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, var(--accent), transparent);
+    opacity: 0.3;
+  }
+  .skill-group-title {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.2rem;
+  }
+  .skill-list {
+    list-style: none;
+  }
+  .skill-list li {
+    font-size: 0.92rem;
+    color: var(--text);
+    padding: 0.35rem 0;
+    border-bottom: 1px solid rgba(74,158,255,0.06);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .skill-list li::before {
+    content: '';
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+  .skill-list li:last-child { border-bottom: none; }
+
+  /* ─── EDUCATION ─── */
+  #education { background: var(--deep); }
+  .edu-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .edu-item {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 2rem;
+    align-items: start;
+    padding: 1.75rem;
+    border: 1px solid rgba(74,158,255,0.1);
+    background: rgba(10,22,40,0.5);
+  }
+  .edu-year {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+    padding-top: 0.2rem;
+    min-width: 80px;
+  }
+  .edu-school {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    color: var(--white);
+    font-weight: 400;
+    margin-bottom: 0.2rem;
+  }
+  .edu-degree {
+    font-size: 0.88rem;
+    color: var(--silver);
+    line-height: 1.6;
+  }
+  .edu-primary {
+    border-color: rgba(200,169,110,0.25);
+    background: rgba(200,169,110,0.03);
+  }
+  .edu-primary .edu-year { color: var(--gold); }
+
+  /* ─── CONTACT ─── */
+  #contact {}
+  .contact-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  .contact-text {
+    font-size: 1rem;
+    line-height: 1.85;
+    color: var(--text);
+    margin-bottom: 2rem;
+  }
+  .contact-location { cursor: default; }
+  .exp-org { margin-bottom: 0.6rem; }
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    color: var(--text);
+    padding: 1rem 1.25rem;
+    border: 1px solid rgba(74,158,255,0.12);
+    transition: all 0.25s;
+  }
+  .contact-link:hover {
+    border-color: rgba(74,158,255,0.4);
+    background: rgba(74,158,255,0.05);
+    color: var(--white);
+    transform: translateX(4px);
+  }
+  .contact-link-icon {
+    width: 36px; height: 36px;
+    background: rgba(74,158,255,0.08);
+    border: 1px solid rgba(74,158,255,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 1rem;
+  }
+  .contact-link-label {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--silver);
+    margin-bottom: 0.15rem;
+  }
+  .contact-link-val {
+    font-size: 0.9rem;
+    color: var(--text);
+  }
+  .contact-extra {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .info-block {
+    padding: 1.5rem;
+    border: 1px solid rgba(200,169,110,0.15);
+    background: rgba(200,169,110,0.02);
+  }
+  .info-block-title {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.6rem;
+  }
+  .info-block-text {
+    font-size: 0.9rem;
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    position: relative;
+    z-index: 1;
+    border-top: 1px solid rgba(74,158,255,0.08);
+    padding: 1.75rem 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    color: rgba(143,163,190,0.5);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* ─── SCROLL ANIMATIONS ─── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.25rem; }
+    .nav-toggle { display: block; }
+    .nav-links {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      display: grid;
+      gap: 0;
+      padding: 0.5rem 1.25rem 1rem;
+      background: rgba(10,22,40,0.97);
+      border-bottom: 1px solid rgba(74,158,255,0.18);
+      transform: translateY(-0.5rem);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+    }
+    .nav-links.open {
+      transform: none;
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+    .nav-links a { display: block; padding: 0.8rem 0; }
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-orbit { display: none; }
+    .about-grid, .contact-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    section { padding: 4rem 0; }
+    .container { padding: 0 1.25rem; }
+    footer { align-items: flex-start; flex-direction: column; gap: 0.5rem; padding: 1.5rem 1.25rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+    .reveal { opacity: 1; transform: none; }
+  }
+</style>
+<noscript>
+  <style>
+    .reveal { opacity: 1; transform: none; }
+    @media (max-width: 768px) {
+      .nav-toggle { display: none; }
+      .nav-links {
+        position: static;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0 1rem;
+        padding: 0;
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: none;
+        background: transparent;
+        border: 0;
+      }
+    }
+  </style>
+</noscript>
+</head>
+<body>
+
+<a class="skip-link" href="#main-content">Skip to content</a>
+<div id="stars" aria-hidden="true"></div>
+
+<!-- NAV -->
+<nav aria-label="Primary navigation">
+  <a class="nav-logo" href="#hero" aria-label="Joseph Normandeau, home">J<span>N</span></a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open navigation menu">Menu</button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<main id="main-content">
+<!-- HERO -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-eyebrow">Aerospace Engineering · Astronautics</div>
+        <h1 class="hero-name">Joseph<br><em>Normandeau</em></h1>
+        <p class="hero-title">B.S. Candidate — Arizona State University · Est. May 2027</p>
+        <p class="hero-summary">I’m an aerospace engineering student focused on astronautics, with hands-on experience in wind-tunnel testing, structural analysis, and orbital mechanics. I enjoy turning physical problems into practical experiments, clear models, and useful engineering results.</p>
+        <div class="hero-ctas">
+          <a href="#contact" class="btn-primary">Get in Touch</a>
+          <a href="#projects" class="btn-outline">View Projects</a>
+        </div>
+      </div>
+      <div class="hero-orbit">
+        <div class="orbit-ring"></div>
+        <div class="orbit-ring"><div class="orbit-dot"></div></div>
+        <div class="orbit-ring"><div class="orbit-dot-2"></div></div>
+        <div class="orbit-center">JN<small>Astronautics</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="reveal">
+        <p class="section-label">01 / About</p>
+        <h2 class="section-title">Driven by the<br>Science of Flight</h2>
+        <div class="about-text">
+          <p>I study aerospace engineering at Arizona State University with a concentration in astronautics. I’m especially interested in the physics behind high-speed flight, spacecraft trajectories, and the structures that make both possible.</p>
+          <p>My coursework has moved between wind tunnels, tensile-testing equipment, and MATLAB simulations. Those projects have taught me how to connect theory with real measurements, question unexpected results, and communicate what the data actually shows.</p>
+          <p>I’m also a member of Sun Devil Rocketry, where I work alongside other students on the practical challenges of designing and building high-powered rockets.</p>
+        </div>
+        <div class="about-badges">
+          <span class="badge">U.S. Person for ITAR Purposes</span>
+          <span class="badge">Dual US &amp; CA Citizen</span>
+          <span class="badge">NEXUS / Global Entry</span>
+          <span class="badge">Seeking Full-Time Roles · May 2027</span>
+        </div>
+      </div>
+      <div class="about-stats reveal">
+        <div class="stat-card">
+          <div class="stat-num">7</div>
+          <div class="stat-label">Engineering Projects</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">3+</div>
+          <div class="stat-label">MATLAB Applications</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">2027</div>
+          <div class="stat-label">Expected Graduation</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">ASU</div>
+          <div class="stat-label">Sun Devil Rocketry</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <p class="section-label reveal">02 / Experience</p>
+    <h2 class="section-title reveal">Work History</h2>
+    <div class="divider"></div>
+
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <div class="exp-period">Jan 2023 – Aug 2024</div>
+        <div class="exp-company">Mesa, AZ</div>
+      </div>
+      <div>
+        <div class="exp-role">Guest Services Associate</div>
+        <div class="exp-company exp-org">LA Fitness</div>
+        <ul class="exp-bullets">
+          <li>Managed front-desk operations and membership systems in a busy customer-facing environment</li>
+          <li>Helped members resolve account and facility issues clearly and professionally</li>
+          <li>Balanced competing requests while keeping daily operations organized</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <div class="exp-period">Ongoing</div>
+        <div class="exp-company">Tempe, AZ</div>
+      </div>
+      <div>
+        <div class="exp-role">Rocketry Team Member</div>
+        <div class="exp-company exp-org">Sun Devil Rocketry – Arizona State University</div>
+        <ul class="exp-bullets">
+          <li>Contribute to a student team that designs and builds high-powered rockets</li>
+          <li>Work with teammates across propulsion, structures, and flight systems</li>
+          <li>Apply classroom concepts to real hardware, design decisions, and team reviews</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <p class="section-label reveal">03 / Projects</p>
+    <h2 class="section-title reveal">Engineering Work</h2>
+    <div class="divider"></div>
+    <div class="projects-grid">
+
+      <a class="project-card reveal" href="projects/airfoil-pressure-lift-drag.pdf" target="_blank" rel="noopener" aria-label="Open the Wind Tunnel Airfoil Analysis project report as a PDF">
+        <div class="project-tag">Aerodynamics Lab</div>
+        <div class="project-name">Wind Tunnel Airfoil Analysis</div>
+        <p class="project-desc">Used surface-pressure measurements and MATLAB integration to calculate lift and drag for NACA 0012 and NACA 4412 airfoils. The results captured zero lift for the symmetric airfoil at 0° and positive lift from the cambered airfoil.</p>
+        <div class="project-tools">
+          <span class="tool-tag">MATLAB</span>
+          <span class="tool-tag">Data Analysis</span>
+          <span class="tool-tag">NACA Airfoils</span>
+        </div>
+        <span class="project-status">View project report (PDF)</span>
+      </a>
+
+      <a class="project-card reveal" href="projects/wake-profile-drag-analysis.pdf" target="_blank" rel="noopener" aria-label="Open the Wake Profile Drag Analysis project report as a PDF">
+        <div class="project-tag">Experimental Aerodynamics</div>
+        <div class="project-name">Wake Profile Drag Analysis</div>
+        <p class="project-desc">Calibrated a hot-wire anemometer and integrated measured wake velocity deficits to estimate zero-lift drag. The resulting drag coefficients were 0.0064 for the NACA 0012 and 0.0099 for the NACA 4412.</p>
+        <div class="project-tools">
+          <span class="tool-tag">Hot-Wire Anemometry</span>
+          <span class="tool-tag">MATLAB</span>
+          <span class="tool-tag">Momentum Analysis</span>
+        </div>
+        <span class="project-status">View project report (PDF)</span>
+      </a>
+
+      <a class="project-card reveal" href="projects/winglet-performance-study.pdf" target="_blank" rel="noopener" aria-label="Open the Winglet Performance Study project report as a PDF">
+        <div class="project-tag">Finite-Wing Aerodynamics</div>
+        <div class="project-name">Winglet Performance Study</div>
+        <p class="project-desc">Compared winglet location, length, and angle across Reynolds numbers of approximately 150,000 and 300,000. MATLAB processing included gravity corrections, uncertainty propagation, lift curves, and drag polars.</p>
+        <div class="project-tools">
+          <span class="tool-tag">Wind Tunnel Testing</span>
+          <span class="tool-tag">MATLAB</span>
+          <span class="tool-tag">Uncertainty Analysis</span>
+        </div>
+        <span class="project-status">View project report (PDF)</span>
+      </a>
+
+      <a class="project-card reveal" href="projects/de-laval-nozzle-compressible-flow.pdf" target="_blank" rel="noopener" aria-label="Open the de Laval Nozzle Compressible Flow project report as a PDF">
+        <div class="project-tag">Compressible Flow &amp; Propulsion</div>
+        <div class="project-name">de Laval Nozzle Flow Analysis</div>
+        <p class="project-desc">Investigated compressible flow through a converging-diverging nozzle while independently varying inlet and outlet pressure. The team used pressure-tap data to calculate Mach number, velocity, density, mass flow, nozzle force, choking behavior, and shock location.</p>
+        <div class="project-tools">
+          <span class="tool-tag">Compressible Flow</span>
+          <span class="tool-tag">Nozzle Testing</span>
+          <span class="tool-tag">Shock Analysis</span>
+        </div>
+        <span class="project-status">View project report (PDF)</span>
+      </a>
+
+      <div class="project-card reveal">
+        <div class="project-tag">High-Speed Aerodynamics Lab</div>
+        <div class="project-name">Shock Tube Experiment</div>
+        <p class="project-desc">Measured shock-wave propagation with pressure transducers and used the time history to estimate shock speed. I analyzed the data in MATLAB and compared the result with normal-shock and Rankine–Hugoniot relations.</p>
+        <div class="project-tools">
+          <span class="tool-tag">MATLAB</span>
+          <span class="tool-tag">Pressure Transducers</span>
+          <span class="tool-tag">Shock Dynamics</span>
+        </div>
+        <span class="project-status">Project PDF coming soon</span>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-tag">Aerospace Structures Lab</div>
+        <div class="project-name">Structural Mechanics Testing</div>
+        <p class="project-desc">Tested aluminum and steel specimens in tension through failure, then used strain-gauge measurements to calculate material properties such as Young’s modulus. I compared the experimental values with published reference data and examined likely sources of error.</p>
+        <div class="project-tools">
+          <span class="tool-tag">Tensile Testing</span>
+          <span class="tool-tag">Strain Gauges</span>
+          <span class="tool-tag">Materials Science</span>
+        </div>
+        <span class="project-status">Project PDF coming soon</span>
+      </div>
+
+      <a class="project-card reveal" href="projects/lambert-intercept-trajectory.pdf" target="_blank" rel="noopener" aria-label="Open the Lambert Intercept Trajectory project report as a PDF">
+        <div class="project-tag">Orbital Mechanics</div>
+        <div class="project-name">Lambert Intercept Trajectory</div>
+        <p class="project-desc">Propagated a target spacecraft with the two-body equations of motion, solved a 45-minute Lambert transfer numerically, and calculated the interceptor’s departure burn. The MATLAB solution produced a required delta-v magnitude of approximately 3.00 km/s and a three-dimensional trajectory visualization.</p>
+        <div class="project-tools">
+          <span class="tool-tag">MATLAB</span>
+          <span class="tool-tag">Lambert Solver</span>
+          <span class="tool-tag">Two-Body Propagation</span>
+        </div>
+        <span class="project-status">View project report (PDF)</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <p class="section-label reveal">04 / Skills</p>
+    <h2 class="section-title reveal">Technical Toolkit</h2>
+    <div class="divider"></div>
+    <div class="skills-grid">
+
+      <div class="skill-group reveal">
+        <div class="skill-group-title">Programming &amp; Analysis</div>
+        <ul class="skill-list">
+          <li>MATLAB</li>
+          <li>Engineering Data Analysis</li>
+          <li>Computational Modeling</li>
+          <li>Numerical Methods</li>
+        </ul>
+      </div>
+
+      <div class="skill-group reveal">
+        <div class="skill-group-title">Engineering Software</div>
+        <ul class="skill-list">
+          <li>SolidWorks</li>
+          <li>Ansys (FEA)</li>
+          <li>Microsoft Excel</li>
+        </ul>
+      </div>
+
+      <div class="skill-group reveal">
+        <div class="skill-group-title">Domain Knowledge</div>
+        <ul class="skill-list">
+          <li>High-Speed Aerodynamics</li>
+          <li>Orbital Mechanics</li>
+          <li>Aerospace Structures &amp; Materials</li>
+          <li>Thermodynamics</li>
+          <li>Random Signal Analysis</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="container">
+    <p class="section-label reveal">05 / Education</p>
+    <h2 class="section-title reveal">Academic Background</h2>
+    <div class="divider"></div>
+    <div class="edu-list">
+
+      <div class="edu-item edu-primary reveal">
+        <div class="edu-year">2023 – 2027</div>
+        <div>
+          <div class="edu-school">Arizona State University — Tempe, AZ</div>
+          <div class="edu-degree">Bachelor of Science in Aerospace Engineering (Astronautics)<br>Expected Graduation: May 2027</div>
+        </div>
+      </div>
+
+      <div class="edu-item reveal">
+        <div class="edu-year">Prior</div>
+        <div>
+          <div class="edu-school">Chandler-Gilbert Community College</div>
+          <div class="edu-degree">English Composition 101 — University Credit</div>
+        </div>
+      </div>
+
+      <div class="edu-item reveal">
+        <div class="edu-year">Prior</div>
+        <div>
+          <div class="edu-school">East Valley Institute of Technology</div>
+          <div class="edu-degree">Future Engineering Program — University of Arizona First-Year Engineering Credit</div>
+        </div>
+      </div>
+
+      <div class="edu-item reveal">
+        <div class="edu-year">2023</div>
+        <div>
+          <div class="edu-school">American Leadership Academy — Gilbert North</div>
+          <div class="edu-degree">High School Diploma, May 2023</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <p class="section-label reveal">06 / Contact</p>
+    <h2 class="section-title reveal">Let's Connect</h2>
+    <div class="divider"></div>
+    <div class="contact-inner">
+      <div class="reveal">
+        <p class="contact-text">I’m looking for a full-time aerospace engineering position beginning in May 2027. I’m particularly interested in propulsion, structures, flight dynamics, test engineering, and mission analysis, and I’d be glad to connect about opportunities in those areas.</p>
+        <div class="contact-links">
+          <a href="mailto:josephnormandeau@gmail.com" class="contact-link">
+            <div class="contact-link-icon" aria-hidden="true">✉</div>
+            <div>
+              <div class="contact-link-label">Email</div>
+              <div class="contact-link-val">josephnormandeau@gmail.com</div>
+            </div>
+          </a>
+          <a href="tel:3606721209" class="contact-link">
+            <div class="contact-link-icon" aria-hidden="true">☎</div>
+            <div>
+              <div class="contact-link-label">Phone</div>
+              <div class="contact-link-val">360-672-1209</div>
+            </div>
+          </a>
+          <a href="https://www.linkedin.com/in/joseph-normandeau-32817b388" target="_blank" rel="noopener noreferrer" class="contact-link">
+            <div class="contact-link-icon" aria-hidden="true">in</div>
+            <div>
+              <div class="contact-link-label">LinkedIn</div>
+              <div class="contact-link-val">Joseph Normandeau</div>
+            </div>
+          </a>
+          <div class="contact-link contact-location">
+            <div class="contact-link-icon" aria-hidden="true">📍</div>
+            <div>
+              <div class="contact-link-label">Location</div>
+              <div class="contact-link-val">Phoenix, AZ</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-extra reveal">
+        <div class="info-block">
+          <div class="info-block-title">Citizenship &amp; Compliance</div>
+          <div class="info-block-text">Dual U.S. and Canadian citizen and a U.S. person for ITAR purposes. Authorized to work in the United States without employer sponsorship.</div>
+        </div>
+        <div class="info-block">
+          <div class="info-block-title">Travel &amp; Clearance</div>
+          <div class="info-block-text">NEXUS and Global Entry member. Open to travel and relocation for the right full-time opportunity.</div>
+        </div>
+        <div class="info-block">
+          <div class="info-block-title">Availability</div>
+          <div class="info-block-text">Seeking a full-time aerospace engineering position beginning in May 2027.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <span>Joseph Normandeau — Aerospace Engineering</span>
+  <span>Phoenix, AZ · josephnormandeau@gmail.com</span>
+</footer>
+
+<script>
+  // Stars
+  const starsEl = document.getElementById('stars');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const starCount = reduceMotion ? 35 : (window.innerWidth < 768 ? 70 : 110);
+  for (let i = 0; i < starCount; i++) {
+    const s = document.createElement('div');
+    s.className = 'star';
+    const size = Math.random() * 2 + 0.5;
+    const dur = (Math.random() * 4 + 2).toFixed(1);
+    const delay = (Math.random() * 5).toFixed(1);
+    const lo = (Math.random() * 0.2).toFixed(2);
+    const hi = (Math.random() * 0.6 + 0.3).toFixed(2);
+    s.style.cssText = `
+      width:${size}px; height:${size}px;
+      top:${Math.random()*100}%; left:${Math.random()*100}%;
+      --dur:${dur}s; --delay:${delay}s; --lo:${lo}; --hi:${hi};
+    `;
+    starsEl.appendChild(s);
+  }
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    reveals.forEach(element => element.classList.add('visible'));
+  } else {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(element => observer.observe(element));
+  }
+
+  const navToggle = document.querySelector('.nav-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  const closeMenu = () => {
+    navLinks.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+    navToggle.setAttribute('aria-label', 'Open navigation menu');
+  };
+  navToggle.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', String(isOpen));
+    navToggle.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+  });
+  navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') {
+      closeMenu();
+      navToggle.focus();
+    }
+  });
+</script>
+</body>
+</html>
